@@ -12,7 +12,8 @@ def show_menu():
     print("1.View_products")
     print("2.Add_products")
     print("3.Changeprice_products")
-    print("4.Exit")
+    print("4.Sell_products")
+    print("5.Exit")
 
 def View_products():
     for product in products:
@@ -67,6 +68,33 @@ def Change_price():
     if not found:
         print("Product not found!")
 
+
+def Sell_products():
+   name=input("Which product has been sold?").strip()
+   print("YOU ENTERED:", repr(name))
+   print("Available products:",products)
+
+   for item in products:
+        print("Checking:", repr(item["category"]))
+        if item["category"]==name:
+           quantity=int(input("How many were sold?"))
+
+           if quantity <= 0:
+              print("Quantity must be greater than zero")
+              return
+           
+           if quantity <= item["stock"]:
+              item["stock"] -=quantity
+              print("product sold")
+              print("The new stock is ", item["stock"])
+              return
+           else:
+              print("No enough stock")
+              return
+
+   print("product not found")
+        
+
 def main():
    while True:
       show_menu()
@@ -78,6 +106,8 @@ def main():
       elif choice=="3":
          Change_price()
       elif choice=="4":
+         Sell_products()
+      elif choice=="5":
          print("Goodbye")
          break
       else:
