@@ -89,7 +89,7 @@ def Sell_products():
               print("The new stock is ", item["stock"])
               return
            else:
-              print("No enough stock")
+              print("Little stock")
               return
 
    print("product not found")
