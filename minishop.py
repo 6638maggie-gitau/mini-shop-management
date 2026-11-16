@@ -44,7 +44,7 @@ def Add_products():
     }
 
     products.append(product)
-    print("New product added!")
+    print("Product added!")
 
 
 def Change_price():
